@@ -38,7 +38,7 @@ class KConsole{
     }
     static log(msg){
         if(3 < KConsole.threshold){return;}
-        if(KConsole.calleeNameType == 0){console.log(msg); return;}
+        if(KConsole.calleeNameType == 0){console.assert( true, msg); return;}
         if( KConsole.isWritable(KConsole._callee(new Error().stack) ) );
         {console.log(`[${KConsole.callDetail.callee}] ${msg}`);}
     }
@@ -55,12 +55,12 @@ class KConsole{
         {console.error(`[${KConsole.callDetail.callee}] ${msg}`);}
     }
     static isWritable(callName){
-        console.log('iswrite', typeof callName, callName)
+        console.assert( true, 'iswrite', typeof callName, callName)
         let allowByName = {
               isEmpty: KConsole.calleeNameType == 2 && callName == ''
             , isValue: KConsole.calleeNameType == 1 && callName != '' && KConsole.calleeName.startsWith(callName)
         }
-        console.log('isWritable',Object.values(allowByName), Object.values(allowByName).includes(true))
+        console.assert( true, 'isWritable',Object.values(allowByName), Object.values(allowByName).includes(true))
         return Object.values(allowByName).includes(true);
     }
     static _callee(errorStack){
@@ -131,14 +131,14 @@ class KConsole_Test{
 }
 
 function test(){
-        console.log('function',KConsole._parse(new Error().stack));
+        console.assert( true, 'function',KConsole._parse(new Error().stack));
         KConsole.log('Log msgs do not return');
         KConsole.warn('Warn msgs do not return');
         KConsole.error('Error msgs Yes Please!');
 }
 
 const unnamed = function(){
-        console.log('anonomous',KConsole._callee(new Error().stack));
+        console.assert( true, 'anonomous',KConsole._callee(new Error().stack));
         KConsole.log('Log msgs do not return');
         KConsole.warn('Warn msgs do not return');
         KConsole.error('Error msgs Yes Please!');

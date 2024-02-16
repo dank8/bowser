@@ -2,7 +2,7 @@
 /**
  * {@link KObject} helper classes plain-old javascript objects
  * 
- * @version 2024-01-07T1100
+ * @version 2024-02-16T1800
  * @author Daniel Kearney <http://github.com/dank8>
  */
 class KObject{
@@ -81,7 +81,7 @@ class KObject{
         let distinctColumnNames = targetArray.reduce(
             (prevValue, currentValue) => Array.isArray(prevValue) ? prevValue.concat(Object.keys(currentValue)) : Object.keys(currentValue)
         );
-        distinctColumnNames = KFetch.distinct(distinctColumnNames)
+        distinctColumnNames = KObject.distinct(distinctColumnNames)
         let headerCSV = '';
         distinctColumnNames.forEach(
             (zItem) => { headerCSV += quote + zItem.replace(quote, quote + quote) + quote + sep; }
@@ -96,7 +96,7 @@ class KObject{
             });
             convertObjectsToStr += '\r\n'
         }
-        return headerCSV + convertObjectsToStr
+        return headerCSV + convertObjectsToStr;
     }
     /** 
      * flattens a heirachy of Objects into a single level object based on period delimitered paths.

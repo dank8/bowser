@@ -31,7 +31,7 @@ class KBrowserWindow {
      * @param throwError boolean throws a sensible error instead of returning boolean
      * @returns boolean
      */
-    static isHostname(url, throwError = false) {
+    static matchesHostname(url, throwError = false) {
         if (!throwError && typeof url == 'string' ) { return new URL(url).hostname == window.location.hostname; }
         if (throwError && typeof url == 'string' && new URL(url).hostname != window.location.hostname ) { throw new Error('Window hostname does not support this feature.') }
         return url == window.location.hostname;

@@ -140,13 +140,13 @@ class KHtmlDocument{
         }
     }
     /** 
-     * flattens multiple selected table nodes into structured {@link Object} from {@link Element} selected from {@link HTMLDocument}.
+     * flattens multiple table nodes into multiple structured {@link Object} from {@link Element} selected from {@link HTMLDocument}.
      * @param {Document} inDocument document to be queried
      * @param {String} tableSelector css selector must match to a Table {@link Node}.
      * @param {Boolean} allowDataAsHeader flag to convert first data row into the table titles.
      * @returns {String}
      */
-    static tableAllToObject(inDocument, tableSelector, allowDataAsHeader = false) {
+    static getTableAll(inDocument, tableSelector, allowDataAsHeader = false) {
         let tables = [];
         inDocument.querySelectorAll('table').forEach( tbl => { 
             console.warn('not yet tested.');
@@ -158,13 +158,13 @@ class KHtmlDocument{
         return tables;
     }
     /** 
-     * flattens single selected table nodes into structured {@link Object} from {@link Element} selected from {@link HTMLDocument}.
+     * flattens single selected table nodes into single structured {@link Object} from {@link Element} selected from {@link HTMLDocument}.
      * @param {Document} inDocument document to be queried
      * @param {String} tableSelector css selector must match to a Table {@link Node}.
      * @param {Boolean} allowDataAsHeader flag to convert first data row into the table titles.
      * @returns {String}
      */
-    static tableToObject(inDocument, tableSelector, allowDataAsHeader = false) {
+    static getTable(inDocument, tableSelector, allowDataAsHeader = false) {
         inDocument.querySelectorAll('table').forEach( tbl => { 
             console.warn('not yet tested.');
             return { name: tableSelector.replace(/^.+[^a-zA-Z0-9](?=[a-zA-Z0-9]*$)/, '')

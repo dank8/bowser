@@ -1,9 +1,8 @@
 
-
 /**
  * {@link KXMLHttpRequest} helper classes for XMLHttpRequest
  * 
- * @version 2024-01-07T1100
+ * @version 2024-02-16T1800
  * @author Daniel Kearney <http://github.com/dank8>
  */
 class KXMLHttpRequest {
@@ -52,7 +51,7 @@ class KXMLHttpRequest {
             }
             /* validate parameters */
             if (!runParam || !runParam.method || !runParam.path) { result.statusClassMessage = "runParam, Method or Path not provided usage: {method: '', path: ''[, query: {item:''}][, headers: {item:''}][, body: ''][, withCredentials: true]}"; reject(result); }
-            if (!KBrowserWindow.getWindowHost(runParam.path, false)) { result.statusClassMessage = `runParam.url and browser window missmatch. Requested: ${window.location.hostname} , Actual: ${targetHostname}`; reject(result); }
+            if (!KBrowserWindow.matchesHostname(runParam.path)) { result.statusClassMessage = `runParam.url and browser window missmatch. Requested: ${window.location.hostname} , Actual: ${targetHostname}`; reject(result); }
 
             let method = runParam.method;
             let url = runParam.path;

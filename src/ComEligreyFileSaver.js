@@ -1,3 +1,4 @@
+
 /**
  * {@link ComEligreyFileSaver} Download data from browser to local file. 
  * Simplified from {@link FileSaver.js|https://github.com/eligrey/FileSaver.js} library, last tested on Edge Version 105.0.1343.53.
